@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // import logo from './logo.svg';
 import './App.css';
 
-const data = {
+const comics = {
         "code": 200,
         "status": "Ok",
         "copyright": "© 2018 MARVEL",
@@ -3026,16 +3026,25 @@ const data = {
                 }
             ]
         }
-
     }
 ;
 
+const url = 'https://randomuser.me/api/?results=10';
+
+fetch(url)
+    .then((resp) => resp.json())
+    .then(function(response) {
+       console.log(response)
+    });
+
+
+
 class App extends Component {
     render() {
-        const {thumbnail} = data.data.results[0];
+        const {thumbnail} = comics.data.results[0];
         return (
             <div className="App">
-                <p>{data.data.results[0].title}</p>
+                <p>{comics.data.results[0].title}</p>
                 <img className="comic-thumbnail" src={`${thumbnail.path}.${thumbnail.extension}`} alt=""/>
             </div>
         );
